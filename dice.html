@@ -34,6 +34,12 @@
             var random= Math.floor (Math.random()*6)
             dice.innerHTML= dices[random]
 
+<head>
+    <title>Rolling Dice</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: Helvetica, sans-serif;
         }
 
         function stopstart(){
@@ -45,11 +51,50 @@
                 stopped=true;
 
             }
+        #dice{
+            font-size: 320px;
+            cursor: pointer;
         }
 
         window.onload= function(){
             dice= document.getElementById("dice");
             stopstart();
+    </style>
+</head>
+
+<body>
+
+<div>Click on the Dice...</div>
+<div id="dice" onclick="stopstart()"></div>
+
+<script>
+    var dice;
+    var dices = ['&#9856;', '&#9857;', '&#9858;', '&#9859;', '&#9860;', '&#9861;'];
+    var t;
+    var stopped = false;
+
+    function change(){
+        var random = Math.floor(Math.random() * 6);
+        dice.innerHTML = dices[random];
+    }
+
+    function stopstart(){
+        if (stopped) {
+            stopped = false;
+            t = setInterval(change, 100);
+        } else {
+            clearInterval(t);
+            stopped = true;
         }
     </script>
+</html>
+    }
+
+    window.onload = function(){
+        dice = document.getElementById("dice");
+        t = setInterval(change, 100);
+    }
+</script>
+
+</body>
 </html>
